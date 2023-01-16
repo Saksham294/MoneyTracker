@@ -1,0 +1,37 @@
+.insideHomeBody>h1{
+    background: -webkit-linear-gradient(343deg, rgba(122,246,255,1) 0%, rgb(45, 150, 63) 100%);
+  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+font-family: 'Lato' sans-serif;
+    text-align: center;
+margin-top: 15rem;
+
+}
+.insideHomeBody>h4{
+
+    font-family: 'Montserrat' sans-serif;
+    text-align: center;
+    color: rgb(184, 184, 184);
+
+}
+.insideHomeBody{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    width: 100vw;
+    height: 100vh;
+}
+.insideHomeBody>button{
+    background-color: #2d963f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Lato' sans-serif;
+    margin-left: 40rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

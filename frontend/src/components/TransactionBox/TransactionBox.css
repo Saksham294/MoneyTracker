@@ -1,0 +1,49 @@
+.transactionContainer {
+    height: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    width: 500px;
+    margin-left: 1rem;
+    background-color: rgb(246, 246, 246);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 2rem;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: right;
+    margin-top: 1rem;
+}
+
+.transactionTitle>h4{
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.transactionDate>h6{
+    margin-top: 0.5rem;
+}
+
+.statusAndBtns{
+display: flex;
+justify-content: space-between;
+}
+.status{
+
+    border-radius: 20px;
+    padding:0.3rem;
+    color: white;
+    font-weight: 500;
+
+}
+
+
+.buttonsContainer>.editBtn{
+color: black;
+
+}
+.buttonsContainer>.deleteBtn{
+color: red;
+}
