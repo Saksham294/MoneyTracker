@@ -1,5 +1,6 @@
 const Transaction=require("../models/transactionModel")
 const User=require("../models/userModel");
+var moment=require("moment")
 
 exports.newTransaction=async(req,res)=>{
     try {
@@ -173,14 +174,42 @@ exports.filterByCategory=async(req,res)=>{
     }
 }
 
-exports.filterByDate=async(req,res)=>{
+exports.groupTransactionByDate=async(req,res)=>{
     try {
         const transactions=await Transaction.find()
-        const transactionsPerDate=transactions.filter(transaction=>transaction.date===req.params.date)
+        const dates=transactions.map(transaction=>moment(transaction.date).format("DD-MM-YYYY"))
+        const uniqueDates=[...new Set(dates)]
+        const transactionsPerDate=uniqueDates.map(date=>{
+            const transactionsPerDate=transactions.filter(transaction=>moment(transaction.date).format("DD-MM-YYYY")===date)
+            return transactionsPerDate
+        })
+        res.status(200).json({
+            success:true,
+            uniqueDates
+        })
+    } catch (error) {
+        res.status(404).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
+
+exports.filterByDate=async(req,res)=>{
+    try {
+        
+        //filter by date range 
+        const transactions=await Transaction.find()
+        const transactionsPerDate=transactions.filter(transaction=>moment(transaction.date).format("DD-MM-YYYY")===req.params.date)
+        
+
+
         res.status(200).json({
             success:true,
             transactionsPerDate
         })
+
     } catch (error) {
         res.status(404).json({
             success:false,

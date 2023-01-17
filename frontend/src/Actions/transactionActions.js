@@ -160,20 +160,20 @@ export const groupTransaction = () => async (dispatch) => {
   try {
 
     dispatch({
-      type: " groupTransactionRequest"
+      type: "groupTransactionRequest"
     })
 
     const { data } = await axios.get(`/api/groupTransactionCategories`)
 console.log(data.uniqueCategories)
     dispatch({
-      type: " groupTransactionSuccess",
+      type: "groupTransactionSuccess",
       payload: data.uniqueCategories,
     })
 
   } catch (error) {
 
     dispatch({
-      type: " groupTransactionFailure",
+      type: "groupTransactionFailure",
       payload: error.response.data.message,
     })
   }
@@ -197,6 +197,52 @@ export const filterByCategory = (category) => async (dispatch) => {
 
     dispatch({
       type: "filterByCategoryFailure",
+      payload: error.response.data.message,
+    })
+  }
+}
+
+export const filterByDate = (date) => async (dispatch) => {
+  try {
+
+    dispatch({
+      type: "filterByDateRequest"
+    })
+
+    const { data } = await axios.get(`/api/filterTransactionsByDate/${date}`)
+
+    dispatch({
+      type: "filterByDateSuccess",
+      payload: data.transactionsPerDate,
+    })
+
+  } catch (error) {
+
+    dispatch({
+      type: "filterByDateFailure",
+      payload: error.response.data.message,
+    })
+  }
+}
+
+export const groupTransactionByDate = () => async (dispatch) => {
+  try {
+
+    dispatch({
+      type: "groupTransactionByDateRequest"
+    })
+
+    const { data } = await axios.get(`/api/groupTransactionsByDate`)
+
+    dispatch({
+      type: "groupTransactionByDateSuccess",
+      payload: data.uniqueDates,
+    })
+
+  } catch (error) {
+
+    dispatch({
+      type: "groupTransactionByDateFailure",
       payload: error.response.data.message,
     })
   }

@@ -5,3 +5,34 @@
     justify-content: center;
     align-items: center;
 }
+
+.transactionsContainer{
+    display: flex;
+
+}
+
+.categoryContainer{
+
+    margin: 2rem;
+}
+
+.categoryName{
+    margin: 1rem;
+}
+.categoryName>button{
+    text-decoration: none;
+    color: black;
+}
+
+.categoryName>button:hover{
+    color: #50ff55;
+}
+
+.dateBox{
+border: 0;
+}
+.dateBox>.dateName>button{
+    padding: 1rem;
+    text-decoration: none;
+    color: black;
+}

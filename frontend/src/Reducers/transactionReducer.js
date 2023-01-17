@@ -31,7 +31,23 @@ export const groupTransactionCategoriesReducer=createReducer(initialState,{
         state.loading = false;
         state.error = action.payload;
     },
+    
 })
+
+export const groupTransactionByDateReducer=createReducer(initialState,{
+    groupTransactionByDateRequest: (state, action) => {
+        state.loading = true;
+    }
+,
+    groupTransactionByDateSuccess: (state, action) => {
+        state.loading = false;
+        state.groupTransactionByDate = action.payload;
+    }
+,
+    groupTransactionByDateFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    }})
 
 export const filterReducer=createReducer(initialState,{
     filterByCategoryRequest: (state, action) => {
@@ -42,6 +58,23 @@ export const filterReducer=createReducer(initialState,{
         state.filterByCategory = action.payload;
     },
     filterByCategoryFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    }
+,
+})
+
+export const filterByDateReducer=createReducer(initialState,{
+    filterByDateRequest: (state, action) => {
+        state.loading = true;
+    }
+,
+    filterByDateSuccess: (state, action) => {
+        state.loading = false;
+        state.filterByDate = action.payload;
+    }
+,
+    filterByDateFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
     }

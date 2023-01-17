@@ -120,15 +120,7 @@ e.preventDefault()
                                 onChange={(e) => setAmt(e.target.value)}
                             />
                             <button onClick={(e)=>addPeople(e,name,amt)}>Add</button>
-                            {peopleArray.map((e,i)=>{
-                                return(
-                                    <div key={i}>
-                                        <p>{e.name}</p>
-                                        <p>{e.amount}</p>
-                                    </div>
-                                )   
-                            })
-                            }
+                           
                         </div>
                     )
                     })
