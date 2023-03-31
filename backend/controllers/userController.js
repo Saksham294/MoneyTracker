@@ -4,7 +4,7 @@ const cloudinary=require("cloudinary")
 
 
 
-exports.registerUser= async (req,res)=>{
+exports.registerUser= async  (req,res)=>{
     try {
         const { name, email, password,avatar,budget } = req.body;
         let user = await User.findOne({ email });
