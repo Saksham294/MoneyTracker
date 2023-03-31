@@ -201,7 +201,8 @@ exports.filterByDate=async(req,res)=>{
         
         //filter by date range 
         const transactions=await Transaction.find()
-        const transactionsPerDate=transactions.filter(transaction=>moment(transaction.date).format("DD-MM-YYYY")===req.params.date)
+        const transactionsPerDate=transactions.filter(transaction=>moment(transaction.date).format("YYYY-MM-DD")>=req.params.startDate && moment(transaction.date).format("YYYY-MM-DD")<=req.params.endDate)
+
         
 
 
@@ -223,6 +224,7 @@ exports.filterByDate=async(req,res)=>{
 exports.splitBill=async(req,res)=>{
     try {
         const user=await User.findById(req.user._id)
+       
         
     } catch (error) {
         res.status(404).json({
