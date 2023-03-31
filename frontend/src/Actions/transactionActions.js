@@ -124,7 +124,7 @@ export const remainingBudget = () => async (dispatch) => {
   }
 }
 
-export const updateTransaction = (id, title, amount, category ) => async (dispatch) => {
+export const updateTransaction = (id, title, amount, category) => async (dispatch) => {
   try {
     dispatch({
       type: "updateTransactionRequest",
@@ -136,7 +136,7 @@ export const updateTransaction = (id, title, amount, category ) => async (dispat
         title,
         amount,
         category,
-      
+
       },
       {
         headers: {
@@ -164,7 +164,7 @@ export const groupTransaction = () => async (dispatch) => {
     })
 
     const { data } = await axios.get(`/api/groupTransactionCategories`)
-console.log(data.uniqueCategories)
+    console.log(data.uniqueCategories)
     dispatch({
       type: "groupTransactionSuccess",
       payload: data.uniqueCategories,
@@ -202,15 +202,15 @@ export const filterByCategory = (category) => async (dispatch) => {
   }
 }
 
-export const filterByDate = (date) => async (dispatch) => {
+export const filterByDate = (startDate, endDate) => async (dispatch) => {
   try {
 
     dispatch({
       type: "filterByDateRequest"
     })
 
-    const { data } = await axios.get(`/api/filterTransactionsByDate/${date}`)
-
+    const { data } = await axios.get(`/api/filterTransactionsByDate/${startDate}/${endDate}`)
+    console.log(data)
     dispatch({
       type: "filterByDateSuccess",
       payload: data.transactionsPerDate,

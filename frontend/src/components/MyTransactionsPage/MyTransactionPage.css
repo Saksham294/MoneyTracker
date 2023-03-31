@@ -30,6 +30,7 @@
 
 .dateBox{
 border: 0;
+margin: 1rem;
 }
 .dateBox>.dateName>button{
     padding: 1rem;

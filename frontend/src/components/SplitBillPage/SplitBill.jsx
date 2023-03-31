@@ -5,48 +5,73 @@ import './SplitBill.css'
 const SplitBill = () => {
     //Create logic for splitting bill
 
-    const [bill, setBill] = useState({
-        title: '',
-        amount: 0,
-        category: '',
-    })
+    const [title,setTitle] = useState('')
+    const [amount,setAmount] = useState(0)
+    const [category,setCategory] = useState('')
+    const [enterNumber,setEnterNumber] = useState(0)
+    const [people,setPeople] = useState([])
 
-    const { title, amount, category } = bill
-    
     const onChange = (e) => {
-        setBill({ ...bill, [e.target.name]: e.target.value })
+        const {name,value} = e.target
+        if(name==='title'){
+            setTitle(value)
+        }
+        if(name==='amount'){
+            setAmount(value)
+        }
+        if(name==='cat'){
+            setCategory(value)
+        }
     }
-  
-    //Add logic to split bill
-    // const splitBill = (e) => {
-    //     e.preventDefault()
-    //     const split = amount / people
-    //     console.log(split)
-    // }
-
-    //Add logic to add people to bill
-    const [enterNumber, setEnterNumber] = useState(0)
-
-
-
-
-    let peopleArray=[]
-    //Re render when peopleArray changes and add people to array
-
-
-
-    function addPeople(e,name,amount){
-e.preventDefault()
-
-
-
-        peopleArray.push({name,amount})
-        console.log(peopleArray)
-    }
-
-
     const [name,setName] = useState('')
     const [amt,setAmt] = useState(0)
+
+    const addPeople = (e,name,amt) => {
+        e.preventDefault()
+        //add person to people array
+        setPeople([...people,{name,amt}])
+
+        //empty input fields after adding one person
+        setName('')
+        setAmt(0)   
+    }
+    console.log(people)
+
+    useEffect(() => {
+        //Calculate total amount to be paid by each person
+        if(enterNumber === people.length){
+            calculate()
+        }
+    
+    },[people])
+
+    //Calculate who owes who and how much
+    const calculate = () => {
+        //Calculate total amount to be paid by each person
+        const total = amount/enterNumber
+        console.log(total)
+        //Loop through people array
+        people.map((person) => {
+            //Check if person paid more than the total amount
+            if(person.amt > total){
+                //If person paid more than the total amount, calculate how much they owe
+                const owe = person.amt - total
+                console.log(`${person.name} owes ${owe}`)
+            }
+            //Check if person paid less than the total amount
+            if(person.amt < total){
+                //If person paid less than the total amount, calculate how much they are owed
+                const owed = total - person.amt
+                console.log(`${person.name} is owed ${owed}`)
+            }
+        })
+    }
+    
+
+
+
+
+ 
 
 
 
@@ -94,43 +119,48 @@ e.preventDefault()
                         value={enterNumber}
                         onChange={(e) => setEnterNumber(e.target.value)}
                     />
-        {enterNumber>0? 
 
-        <div>
-            {
-                [...Array(enterNumber)].map((e,i)=>{
-                    return(
-                        <div key={i}>
-                            <label htmlFor='name'>Name</label>
-                            <input
-                                type='text'
-                                className='form-control'
-                                id='name'
-                                name='name'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                            <label htmlFor='amt'>Amount</label>
-                            <input
-                                type='number'
-                                className='form-control'
-                                id='amt'
-                                name='amt'
-                                value={amt}
-                                onChange={(e) => setAmt(e.target.value)}
-                            />
-                            <button onClick={(e)=>addPeople(e,name,amt)}>Add</button>
-                           
-                        </div>
-                    )
-                    })
-            }
-        </div>
-        
-        :null}
+                    <div className='people'>
 
+                        {
+                            //Loop through number of people and create input fields for each person 
+//Auto submit form after creating input fields for each person
 
+                            [...Array(enterNumber)].map((e,i) => (
+                                <div className='person'>
+                                    <label htmlFor='name'>Name</label>
+                                    <input
 
+                                        type='text'
+                                        className='form-control'
+                                        id='name'
+                                        name='name'
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                    <label htmlFor='amt'>Amount</label>
+                                    <input
+
+                                        type='number'
+                                        className='form-control'
+                                        id='amt'
+                                        name='amt'
+                                        value={amt}
+                                        onChange={(e) => setAmt(e.target.value)}
+                                    />
+
+                             {
+                                enterNumber===people.length?
+                                null:
+                                <button disabled={enterNumber===people.length?true:false} className='btn btn-primary' onClick={(e) => addPeople(e,name,amt)}>Add Person</button>
+                             }  
+                                </div>
+                            ))
+
+            
+                        }
+
+                    </div>
         </div>
         </form>
         </div>

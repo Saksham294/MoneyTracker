@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {useSelector,useDispatch} from 'react-redux'
@@ -14,8 +14,14 @@ import UTP from './components/UpdateTransactionPage/UTP';
 import SplitBill from './components/SplitBillPage/SplitBill';
 import AboutUs from './components/AboutUs/AboutUs';
 import {groupTransaction} from './Actions/transactionActions'
+import axios from 'axios';
+import { set } from 'date-fns';
 
 function App() {
+
+  const [photos,setPhotos]=useState([])
+
+ 
 
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -27,6 +33,8 @@ function App() {
   const {isAuthenticated} = useSelector(state => state.user)
   return (
     <div className="App">
+
+
   <Router>
 <Navbar/>
     <Routes>

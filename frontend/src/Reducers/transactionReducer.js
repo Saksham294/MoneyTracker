@@ -71,7 +71,7 @@ export const filterByDateReducer=createReducer(initialState,{
 ,
     filterByDateSuccess: (state, action) => {
         state.loading = false;
-        state.filterByDate = action.payload;
+        state.transactionsPerDate = action.payload;
     }
 ,
     filterByDateFailure: (state, action) => {

@@ -1,0 +1,11 @@
+.splitForm{
+    border: 2px solid red;
+    width: 95%;
+    margin-left: 1rem;
+}
+
+.splitForm>div>input{
+    width: 100%;
+
+
+}
