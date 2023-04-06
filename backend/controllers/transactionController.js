@@ -230,16 +230,3 @@ exports.filterByDate=async(req,res)=>{
 }
 
 //Split bill and who ows who and how much
-
-exports.splitBill=async(req,res)=>{
-    try {
-        const user=await User.findById(req.user._id)
-       
-        
-    } catch (error) {
-        res.status(404).json({
-            success:false,
-            message:error.message
-        })
-    }
-}
