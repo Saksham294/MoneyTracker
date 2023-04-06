@@ -10,7 +10,7 @@ router.route('/getTransaction/:id').get(isAuthenticated,getTransaction)
 router.route('/getRemainingBudget').get(isAuthenticated,remainingBudget)
 router.route('/groupTransactionCategories').get(isAuthenticated,groupTransactionCategories)
 router.route('/filterTransactionsByCategory/:category').get(isAuthenticated,filterByCategory)
-//get transactions by date
+//get transactions by date and group and filter them
 router.route('/filterTransactionsByDate/:startDate/:endDate').get(isAuthenticated,filterByDate)
 router.route('/groupTransactionsByDate').get(isAuthenticated,groupTransactionByDate)
 
