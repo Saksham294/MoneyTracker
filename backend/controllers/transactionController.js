@@ -166,6 +166,7 @@ exports.groupTransactionCategories=async(req,res)=>{
     }
 }
 
+//Filter Transactions by category
 exports.filterByCategory=async(req,res)=>{
     try {
         const transactions=await Transaction.find()
@@ -182,6 +183,7 @@ exports.filterByCategory=async(req,res)=>{
     }
 }
 
+//Group transactions by date
 exports.groupTransactionByDate=async(req,res)=>{
     try {
         const transactions=await Transaction.find()
@@ -203,7 +205,7 @@ exports.groupTransactionByDate=async(req,res)=>{
     }
 }
 
-
+//Filter transactions by date
 exports.filterByDate=async(req,res)=>{
     try {
         
