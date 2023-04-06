@@ -5,7 +5,7 @@ const dotenv=require("dotenv")
 
 dotenv.config()
 
-
+//Creating a transaction schema
 const transactionSchema=new mongoose.Schema({
     title:{
         type:String,
