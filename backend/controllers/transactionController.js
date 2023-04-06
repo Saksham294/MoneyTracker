@@ -2,6 +2,8 @@ const Transaction=require("../models/transactionModel")
 const User=require("../models/userModel");
 var moment=require("moment")
 
+
+//Create a new transaction
 exports.newTransaction=async(req,res)=>{
     try {
 
@@ -37,7 +39,7 @@ exports.newTransaction=async(req,res)=>{
     }
 }
 
-
+//Delete a transaction
 exports.deleteTransaction=async(req,res)=>{
     try {
         const transaction=await Transaction.findById(req.params.id)
@@ -68,6 +70,7 @@ exports.deleteTransaction=async(req,res)=>{
     }
 }
 
+//Update a transaction
 exports.updateTransaction=async (req,res)=>{
     try {
         var transaction=await Transaction.findById(req.params.id)
@@ -90,8 +93,10 @@ exports.updateTransaction=async (req,res)=>{
             success:false,
             message:error.message,
         })
-    }}
+}}
 
+
+//Get a particular transaction
 exports.getTransaction=async(req,res)=>{
         try {
       
@@ -109,8 +114,9 @@ exports.getTransaction=async(req,res)=>{
             message: error.message,
           });
         }
-      }
+}
 
+//Calculate remaining budget of the user
 exports.remainingBudget=async(req,res)=>{
     try {
         const user=await User.findById(req.user._id)
@@ -137,6 +143,8 @@ exports.remainingBudget=async(req,res)=>{
     }
 }
 
+
+//Group transactions by categories
 exports.groupTransactionCategories=async(req,res)=>{
     try {
         const transactions=await Transaction.find()
