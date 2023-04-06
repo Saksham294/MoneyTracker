@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const dotenv=require("dotenv")
 
 dotenv.config()
-
+//Creating a user schema
 const userSchema=new mongoose.Schema({
 
     name:{
