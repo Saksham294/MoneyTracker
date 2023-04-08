@@ -4,6 +4,7 @@ const dotenv=require("dotenv")
 
 dotenv.config()
 
+//User authentication middleware
  const isAuthenticated=async (req,res,next)=>{
   try {
     const { token } = req.cookies;
