@@ -11,6 +11,7 @@ app.use(cors());
 
 app.use(express.json())
 
+//Using cloudinary to store images
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
   api_key:  process.env.API_KEY,
