@@ -3,7 +3,7 @@ const Transaction=require("../models/transactionModel")
 const cloudinary=require("cloudinary")
 
 
-
+//Register a user
 exports.registerUser= async  (req,res)=>{
     try {
         const { name, email, password,avatar,budget } = req.body;
