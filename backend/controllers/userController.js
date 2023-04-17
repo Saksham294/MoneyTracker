@@ -84,6 +84,7 @@ exports.loginUser = async (req, res) => {
     }
 }
 
+//Logout a user
 exports.logoutUser=async(req,res)=>{
   try {
       res.cookie("token", "none", {
@@ -102,6 +103,7 @@ exports.logoutUser=async(req,res)=>{
       })
   }
 }
+
 
 exports.getMyTransactions=async(req,res)=>{
     try {
