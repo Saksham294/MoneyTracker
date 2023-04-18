@@ -104,7 +104,7 @@ exports.logoutUser=async(req,res)=>{
   }
 }
 
-
+//Get transactions
 exports.getMyTransactions=async(req,res)=>{
     try {
         const user = await User.findById(req.user._id);
