@@ -140,7 +140,7 @@ exports.getAllMyPurchases=async(req,res)=>{
           });
     }
 }
-
+//get user profile
 exports.getMyProfile=async(req,res)=>{
   try {
     const user = await User.findById(req.user._id).populate(
